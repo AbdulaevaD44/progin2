@@ -1,0 +1,17 @@
+<header>
+    <h1>🌱 Мой сад</h1>
+    <nav>
+        <a routerLink="/dashboard" routerLinkActive="active">Дашборд</a>
+        <a routerLink="/diary" routerLinkActive="active">Дневник</a>
+        <a routerLink="/tasks" routerLinkActive="active">Задачи</a>
+        <a routerLink="/diagnosis" routerLinkActive="active">Диагностика</a>
+        <a routerLink="/settings" routerLinkActive="active">Настройки</a>
+        <a routerLink="/auth" routerLinkActive="active" style="border: 1px solid white; padding: 5px 10px; border-radius: 5px;">Вход</a>
+    </nav>
+</header>
+
+<main>
+    <router-outlet></router-outlet>
+</main>
+
+<footer>© 2026 Мой сад — приложение для садоводов</footer>
