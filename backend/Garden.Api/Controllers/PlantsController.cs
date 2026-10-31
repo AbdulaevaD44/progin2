@@ -1,8 +1,6 @@
 using Garden.Application.Dtos;
-using Garden.Domain;
-using Garden.Infrastructure;
+using Garden.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Garden.Api.Controllers;
 
@@ -10,39 +8,36 @@ namespace Garden.Api.Controllers;
 [Route("api/[controller]")]
 public class PlantsController : ControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly IPlantRepository _repository;
 
-    public PlantsController(AppDbContext context)
+    public PlantsController(IPlantRepository repository)
     {
-        _context = context;
+        _repository = repository;
     }
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<PlantDto>>> GetPlants(int page = 1, int pageSize = 10)
     {
-        var plants = await _context.Plants
-            .Skip((page - 1) * pageSize) 
-            .Take(pageSize)             
-            .Select(p => new PlantDto
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Location = p.Location,
-                PlantingDate = p.PlantingDate,
-                NeedsWatering = p.NeedsWatering
-            })
-            .ToListAsync();
+        var plants = await _repository.GetAllAsync(page, pageSize);
+        
+        var dtos = plants.Select(p => new PlantDto
+        {
+            Id = p.Id,
+            Name = p.Name,
+            Location = p.Location,
+            PlantingDate = p.PlantingDate,
+            NeedsWatering = p.NeedsWatering
+        });
 
-        return Ok(plants); // HTTP 200
+        return Ok(dtos);
     }
 
     [HttpPost]
     public async Task<ActionResult<PlantDto>> CreatePlant(CreatePlantDto dto)
     {
-        // если не пройдена, вернет 400
         if (!ModelState.IsValid) return BadRequest(ModelState);
 
-        var plant = new Plant
+        var plant = new Garden.Domain.Plant
         {
             Name = dto.Name,
             Location = dto.Location,
@@ -50,21 +45,9 @@ public class PlantsController : ControllerBase
             NeedsWatering = false
         };
 
-        _context.Plants.Add(plant);
-        await _context.SaveChangesAsync();
+        await _repository.AddAsync(plant);
+        await _repository.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(GetPlants), new { id = plant.Id }, plant); // HTTP 201 Created
-    }
-
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeletePlant(Guid id)
-    {
-        var plant = await _context.Plants.FindAsync(id);
-        if (plant == null) return NotFound(); // HTTP 404
-
-        _context.Plants.Remove(plant);
-        await _context.SaveChangesAsync();
-
-        return NoContent(); // HTTP 204
+        return CreatedAtAction(nameof(GetPlants), new { id = plant.Id }, plant);
     }
 }
