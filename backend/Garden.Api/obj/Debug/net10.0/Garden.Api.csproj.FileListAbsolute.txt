@@ -44,3 +44,7 @@
 /workspaces/progin2/backend/Garden.Api/obj/Debug/net10.0/Garden.Api.pdb
 /workspaces/progin2/backend/Garden.Api/obj/Debug/net10.0/Garden.Api.genruntimeconfig.cache
 /workspaces/progin2/backend/Garden.Api/obj/Debug/net10.0/ref/Garden.Api.dll
+/workspaces/progin2/backend/Garden.Api/bin/Debug/net10.0/Dapper.dll
+/workspaces/progin2/backend/Garden.Api/bin/Debug/net10.0/Microsoft.EntityFrameworkCore.Relational.dll
+/workspaces/progin2/backend/Garden.Api/bin/Debug/net10.0/Npgsql.dll
+/workspaces/progin2/backend/Garden.Api/bin/Debug/net10.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
