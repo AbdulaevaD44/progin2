@@ -12,7 +12,7 @@
         <div class="card" *ngFor="let plant of plants">
             <h3>{{ plant.name }}</h3>
             <p><b>Место:</b> {{ plant.location }}</p>
-            <p><b>Посажено:</b> {{ plant.plantingDate }}</p>
+            <p><b>Посажено:</b> {{ plant.plantingDate | date:'dd.MM.yyyy' }}</p>
             
             <p *ngIf="plant.needsWatering"><span class="badge">Нужен полив</span></p>
             <p *ngIf="!plant.needsWatering"><span class="badge ok">Всё хорошо</span></p>

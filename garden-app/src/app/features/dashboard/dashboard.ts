@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core'; // <-- Добавили ChangeDetectorRef
 import { CommonModule } from '@angular/common';
 import { PlantService } from '../../services/plant';
 import { Plant } from '../../models/plant';
@@ -13,11 +13,19 @@ import { Plant } from '../../models/plant';
 export class Dashboard implements OnInit {
   plants: Plant[] = [];
 
-  constructor(private plantService: PlantService) {}
+  constructor(private plantService: PlantService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.plantService.getPlants().subscribe(data => {
-      this.plants = data; 
+    this.plantService.getPlants().subscribe({
+      next: (data) => {
+        console.log('Данные дошли в Ангуляр:', data);
+        this.plants = data; 
+        
+        this.cdr.detectChanges(); 
+      },
+      error: (err) => {
+        console.error('Ошибка:', err);
+      }
     });
   }
 }
