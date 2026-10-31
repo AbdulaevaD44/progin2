@@ -1,0 +1,16 @@
+/workspaces/progin2/backend/Garden.Application/bin/Debug/net10.0/Garden.Application.deps.json
+/workspaces/progin2/backend/Garden.Application/bin/Debug/net10.0/Garden.Application.dll
+/workspaces/progin2/backend/Garden.Application/bin/Debug/net10.0/Garden.Application.pdb
+/workspaces/progin2/backend/Garden.Application/bin/Debug/net10.0/Garden.Domain.dll
+/workspaces/progin2/backend/Garden.Application/bin/Debug/net10.0/Garden.Domain.pdb
+/workspaces/progin2/backend/Garden.Application/obj/Debug/net10.0/Garden.Application.csproj.AssemblyReference.cache
+/workspaces/progin2/backend/Garden.Application/obj/Debug/net10.0/Garden.Application.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/progin2/backend/Garden.Application/obj/Debug/net10.0/Garden.Application.AssemblyInfoInputs.cache
+/workspaces/progin2/backend/Garden.Application/obj/Debug/net10.0/Garden.Application.AssemblyInfo.cs
+/workspaces/progin2/backend/Garden.Application/obj/Debug/net10.0/Garden.Application.csproj.CoreCompileInputs.cache
+/workspaces/progin2/backend/Garden.Application/obj/Debug/net10.0/Garden.Application.sourcelink.json
+/workspaces/progin2/backend/Garden.Application/obj/Debug/net10.0/Garden.A.63F70C2A.Up2Date
+/workspaces/progin2/backend/Garden.Application/obj/Debug/net10.0/Garden.Application.dll
+/workspaces/progin2/backend/Garden.Application/obj/Debug/net10.0/refint/Garden.Application.dll
+/workspaces/progin2/backend/Garden.Application/obj/Debug/net10.0/Garden.Application.pdb
+/workspaces/progin2/backend/Garden.Application/obj/Debug/net10.0/ref/Garden.Application.dll
