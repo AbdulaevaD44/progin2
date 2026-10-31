@@ -1,9 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { PlantService } from '../../services/plant';
+import { Plant } from '../../models/plant';
 
 @Component({
-  imports: [],
   selector: 'app-dashboard',
-  styleUrl: './dashboard.css',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './dashboard.html',
+  styleUrl: './dashboard.css'
 })
-export class Dashboard {}
+export class Dashboard implements OnInit {
+  plants: Plant[] = [];
+
+  constructor(private plantService: PlantService) {}
+
+  ngOnInit(): void {
+    this.plantService.getPlants().subscribe(data => {
+      this.plants = data; 
+    });
+  }
+}
