@@ -1,0 +1,10 @@
+bin/
+obj/
+.vscode/
+
+node_modules/
+dist/
+.angular/
+
+.DS_Store
+Thumbs.db

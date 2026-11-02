@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Garden.Api/Garden.Api.csproj" />
+  <Project Path="Garden.Application/Garden.Application.csproj" />
+  <Project Path="Garden.Domain/Garden.Domain.csproj" />
+  <Project Path="Garden.Infrastructure/Garden.Infrastructure.csproj" />
+  <Project Path="Garden.Tests/Garden.Tests.csproj" />
+</Solution>
