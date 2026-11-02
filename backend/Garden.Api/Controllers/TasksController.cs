@@ -15,6 +15,7 @@ public class TasksController : ControllerBase
         _repository = repository;
     }
 
+    // GET
     [HttpGet]
     public async Task<ActionResult<IEnumerable<TaskDto>>> GetTasks(int page = 1, int pageSize = 10)
     {
@@ -31,6 +32,7 @@ public class TasksController : ControllerBase
         return Ok(dtos);
     }
 
+    // POST
     [HttpPost]
     public async Task<IActionResult> CreateTask(CreateTaskDto dto)
     {
@@ -44,6 +46,6 @@ public class TasksController : ControllerBase
         };
 
         await _repository.AddAsync(task);
-        return Ok();
+        return Ok(); 
     }
 }

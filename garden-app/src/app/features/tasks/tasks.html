@@ -1,26 +1,15 @@
 <div class="container">
     <h2>✅ Список дел на неделю</h2>
 
-    <div class="cards">
-        <div class="card">
-            <h3>Полить помидоры</h3>
-            <p><b>Срок:</b> 10.05.2026</p>
-            <p><span class="badge">Не выполнено</span></p>
-        </div>
-        <div class="card">
-            <h3>Прополоть грядки</h3>
-            <p><b>Срок:</b> 11.05.2026</p>
-            <p><span class="badge">Не выполнено</span></p>
-        </div>
-        <div class="card">
-            <h3>Собрать клубнику</h3>
-            <p><b>Срок:</b> 12.05.2026</p>
-            <p><span class="badge ok">Выполнено</span></p>
-        </div>
-        <div class="card">
-            <h3>Удобрить перец</h3>
-            <p><b>Срок:</b> 14.05.2026</p>
-            <p><span class="badge">Не выполнено</span></p>
+    <div *ngIf="tasks.length === 0">Загрузка задач...</div>
+
+    <div class="cards" *ngIf="tasks.length > 0">
+        <div class="card" *ngFor="let task of tasks">
+            <h3>{{ task.description }}</h3>
+            <p><b>Срок:</b> {{ task.dueDate | date:'dd.MM.yyyy' }}</p>
+            
+            <p *ngIf="task.isCompleted"><span class="badge ok">Выполнено</span></p>
+            <p *ngIf="!task.isCompleted"><span class="badge">Не выполнено</span></p>
         </div>
     </div>
 

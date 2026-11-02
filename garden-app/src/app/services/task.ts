@@ -1,21 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Task } from '../models/task';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
-  private mockTasks: Task[] = [
-    { id: 1, description: 'Полить помидоры', dueDate: '10.05.2026', isCompleted: false },
-    { id: 2, description: 'Прополоть грядки', dueDate: '11.05.2026', isCompleted: false },
-    { id: 3, description: 'Собрать клубнику', dueDate: '12.05.2026', isCompleted: true }
-  ];
+  private apiUrl = 'https://unhallowed-owl-wrw764jpwj5w3947p-5210.app.github.dev/api/Tasks';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getTasks(): Observable<Task[]> {
-    return of(this.mockTasks).pipe(delay(500));
+    return this.http.get<Task[]>(this.apiUrl);
   }
 }
